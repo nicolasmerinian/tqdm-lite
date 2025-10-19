@@ -1,34 +1,36 @@
 import sys
 import time
 
-def tqdm_lite(iterable):
-    def print_bar(progress):
-        filled = int(progress * bar_length)
-        bar = "#" * filled + "-" * (bar_length - filled)
-        sys.stdout.write(f"\r{bar} | {progress * 100:.1f}%")
+class TqdmLite:
+    def __init__(self, iterable, bar_length=25):
+        self.iterable = iterable
+        self.bar_length = bar_length
+        try:
+            self.total = len(self.iterable)
+        except TypeError:
+            self.total = None
+    
+    def _print_bar(self, progress_ratio):
+        filled = int(progress_ratio * self.bar_length)
+        bar = "#" * filled + "-" * (self.bar_length - filled)
+        sys.stdout.write(f"\r{bar} | {progress_ratio * 100:.1f}%")
         sys.stdout.flush()
     
-    try:
-        total = len(iterable)
-    except TypeError:
-        total = None
-
-    bar_length = 25
-    
-    if total is not None:
-        for i, item in enumerate(iterable, start=1):
-            yield item
-            print_bar(i / total)
-    else:
-        for i, item in enumerate(iterable, start=1):
-            yield item
-    print()
-    
+    def __iter__(self):
+        if self.total is not None:
+            for i, item in enumerate(self.iterable, start=1):
+                yield item
+                self._print_bar(i / self.total)
+        else:
+            for i, item in enumerate(self.iterable, start=1):
+                yield item
+        print()
+        
 
 def main():
     array = [x ** 2 for x in range(15)]
-    
-    for _ in tqdm_lite(array):
+
+    for _ in TqdmLite(array):
         time.sleep(0.2)
 
 
