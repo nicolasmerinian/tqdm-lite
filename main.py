@@ -2,9 +2,10 @@ import sys
 import time
 
 class TqdmLite:
-    def __init__(self, iterable, bar_length=25):
+    def __init__(self, iterable, bar_length=25, prefix=""):
         self.iterable = iterable
         self.bar_length = bar_length
+        self.prefix = prefix
         try:
             self.total = len(self.iterable)
         except TypeError:
@@ -16,7 +17,7 @@ class TqdmLite:
         bar = "#" * filled + "-" * (self.bar_length - filled)
         elapsed = time.time() - self.timer
         eta = elapsed / index * (self.total - index)
-        sys.stdout.write(f"\r{bar} | {progress_ratio * 100:.1f}% | Remaining: {eta:.1f}s")
+        sys.stdout.write(f"\r{self.prefix.strip()} {bar} | {progress_ratio * 100:.1f}% | Remaining: {eta:.1f}s")
         sys.stdout.flush()
     
     def __iter__(self):
@@ -35,7 +36,7 @@ class TqdmLite:
 def main():
     array = [x ** 2 for x in range(15)]
 
-    for _ in TqdmLite(array):
+    for _ in TqdmLite(array, prefix="Calculating:"):
         time.sleep(0.2)
 
 
