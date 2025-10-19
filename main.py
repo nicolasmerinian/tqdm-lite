@@ -3,24 +3,24 @@ import time
 
 def tqdm_lite(iterable):
     total = len(iterable)
-    bar_length = 20
+    bar_length = 25
     
     for i, item in enumerate(iterable):
         percent = i / total
         progress = int(percent * bar_length)
-        str = "#" * progress + '-' * (bar_length - progress)
-        sys.stdout.write(f"\r{str}")
+        bar = "#" * progress + '-' * (bar_length - progress)
+        sys.stdout.write(f"\r{bar} | {percent*100:.1f}%")
         sys.stdout.flush()
 
         yield item
     
-    str = "#" * bar_length
-    sys.stdout.write(f"\r{str}")
+    bar = "#" * bar_length
+    sys.stdout.write(f"\r{bar} | 100.0%")
     sys.stdout.flush()
     
 
 def main():
-    array = [x ** 2 for x in range(10)]
+    array = [x ** 2 for x in range(15)]
     
     for _ in tqdm_lite(array):
         time.sleep(0.2)
