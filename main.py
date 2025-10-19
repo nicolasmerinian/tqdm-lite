@@ -14,10 +14,11 @@ class TqdmLite:
     
     def _print_bar(self, progress_ratio, index):
         filled = int(progress_ratio * self.bar_length)
-        bar = "#" * filled + "-" * (self.bar_length - filled)
+        cursor = "ᗧ" if index % 2 == 0 else "ᱝ"
+        bar = " " * filled + cursor + "•" * (self.bar_length - filled)
         elapsed = time.time() - self.timer
         eta = elapsed / index * (self.total - index)
-        sys.stdout.write(f"\r{self.prefix.strip()} {bar} | {progress_ratio * 100:.1f}% | Remaining: {eta:.1f}s")
+        sys.stdout.write(f"\r{self.prefix.strip()} [{bar}ᗣ] | {progress_ratio * 100:.1f}% | Remaining: {eta:.1f}s")
         sys.stdout.flush()
     
     def __iter__(self):
