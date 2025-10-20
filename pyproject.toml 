@@ -1,0 +1,12 @@
+[project]
+name = "tqdm_lite"
+version = "0.1.0"
+description = "Mini barre de progression façon tqdm"
+readme = "README.md"
+authors = [{name = "Nicolas Merinian", email = "nicolas.merinian@gmail.com"}]
+requires-python = ">=3.8"
+dependencies = []
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+tqdm_lite/__init__.py
+tqdm_lite/core.py
+tqdm_lite.egg-info/PKG-INFO
+tqdm_lite.egg-info/SOURCES.txt
+tqdm_lite.egg-info/dependency_links.txt
+tqdm_lite.egg-info/top_level.txt

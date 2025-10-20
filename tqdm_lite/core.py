@@ -32,14 +32,3 @@ class TqdmLite:
             for i, item in enumerate(self.iterable, start=1):
                 yield item
         print()
-        
-
-def main():
-    array = [x ** 2 for x in range(15)]
-
-    for _ in TqdmLite(array, prefix="Calculating:"):
-        time.sleep(0.2)
-
-
-if __name__ == "__main__":
-    main()
