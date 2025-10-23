@@ -3,7 +3,7 @@
 Mini barre de progression Python inspirée de tqdm.
 Le but était de pratiquer. On m'a parlé de tqdm alors j'ai voulu essayer de reproduire la fonctionnalité.
 
-![Alt text](/./screenshot.png?raw=true "Screenshot")
+![Alt text](/./gif-tqdm-github.gif?raw=true "GIF showing the rendering")
 
 ## Installation
 pip install git+https://github.com/nicolasmerinian/tqdm-lite.git
