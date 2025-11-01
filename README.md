@@ -1,14 +1,15 @@
 # tqdm-lite
 
-Mini barre de progression Python inspirée de tqdm.
-Le but était de pratiquer. On m'a parlé de tqdm alors j'ai voulu essayer de reproduire la fonctionnalité.
+Mini Python progress bar inspired by tqdm. 
+
+The goal was to practice. Someone told me about tqdm, so I wanted to try to reproduce its functionality.
 
 ![Alt text](/./gif-tqdm-github.gif?raw=true "GIF showing the rendering")
 
 ## Installation
 pip install git+https://github.com/nicolasmerinian/tqdm-lite.git
 
-## Exemple d'utilisation
+## Example of use
 
 ```python
 from tqdm_lite import TqdmLite
@@ -20,9 +21,9 @@ for _ in TqdmLite(range(10), prefix="Processing:"):
 
 ---
 
-## ** Tester localement**
+## **To test locally**
 
-Dans le dossier racine :
+In the root directory :
 
 ```bash
 pip install -e .
